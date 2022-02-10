@@ -98,7 +98,17 @@ if (hasSameSuperclass && child.widget == newWidget) {
 
 ## 3 绘制流程
 
-绘制过程指的是当前一次的Frame如何更新，流程包括：
+### 3.1 Collect Elements
+
+绘制流程中比较关键问题是Element来源，从第二章可以看出，Element的来源有两种：
+- createElement、mount：新建&挂载
+- _dirtyElements：通过`scheduleBuildFor`触发，而`scheduleBuildFor`调用时机有两种:
+  - activate：来自于inflateWidget时，由`_retakeInactiveElement`获取被inactivate的Widget，重复利用
+  - markNeedsBuild
+
+### 3.2 绘制流程
+
+绘制过程指的是当前一次的Frame如何更新。我们知道Element Tree包含了整个page的element，如何保证本次的绘制不会重绘整个页面呢？答案就是3.1节中收集到的所有Element,下面讲述的就是基于这些Element的绘制流程，包括：
 
 - 在`ScheduleFrame`时注册`onBeginFrame`(由Vsync信号触发)、`onDrawFrame`到window上
 
