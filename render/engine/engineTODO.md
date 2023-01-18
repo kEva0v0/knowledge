@@ -14,9 +14,10 @@ https://github.com/kEva0v0/opengl-demo.git
 - 实现Camera功能
 目前算是可用了
 
-## TODO：
+## TODO
 
 ### 2023.01.17
+
 - 碰撞检测
 - 尝试迁移到C++
 - CameraManipulator并不好用，对最大最小俯仰角无限制，对Pan操作亦没有速率控制功能，需要补充

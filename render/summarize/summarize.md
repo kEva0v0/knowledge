@@ -78,6 +78,24 @@ Application阶段
 
 该阶段内通常会发生物体、场景、摄像机的[变换](../base-render/base-knowledge/transform.md)，在变换时，我们需要手动设置一些变换参数，然后将渲染指令提交给渲染引擎，表示我们准备开始进行一轮全新的渲染。
 
+Geometry阶段
+
+该阶段主要是将Model转化为引擎空间坐标(World Coordinate)并进行光照处理
+
+转换阶段主要如下图所示[2]
+![alt](./geometry.png)
+其大致分为
+
+- 物体坐标 to 世界坐标(World Coordinate)
+- 世界坐标 to 视口坐标(Viewport Coordinate)
+- 视口坐标 to 裁剪坐标(Clip Coordinate)
+- 裁剪坐标 to 屏幕坐标(Screen Coordinate)
+
+光照处理，不同的渲染管线对光照的处理有所不同，所需的时间复杂度、空间复杂度也不尽相同。前向渲染(Forward-Rendering)采用的是使用所有光源对所有物体进行处理
+
+Rasterization阶段
+
+该阶段主要是将当前视口对应的Object转化为屏幕图片，即光栅化
 
 ## ForSeen
 
@@ -85,3 +103,5 @@ Application阶段
 ## Reference
 
 [1]UE5写实小区场景制作展示，https://www.bilibili.com/video/BV1hP4y1q7LR
+
+[2]坐标系统, https://learnopengl-cn.github.io/01%20Getting%20started/08%20Coordinate%20Systems/
