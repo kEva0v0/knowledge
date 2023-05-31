@@ -1,4 +1,5 @@
-# View绘制流程
+# Android Java层绘制
+
 以下分析基于Android-28
 
 ## 从Resume说起
